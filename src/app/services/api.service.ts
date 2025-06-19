@@ -28,8 +28,8 @@ export class ApiService {
   }
 
   private authHeader(): HttpHeaders {
-    const token = localStorage.getItem('token');
-    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const token = localStorage.getItem('token') ?? '';
+    return new HttpHeaders({ Authorization: `Bearer ${token}` });
   }
 
   createNote(note: any): Observable<any> {

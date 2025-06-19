@@ -29,7 +29,9 @@ export class LoginComponent {
     this.api.login(this.formData).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/notes']);
+        setTimeout(() => {
+          this.router.navigate(['/notes']);
+        }, 100); // give token time to be saved
       },
       error: (err) => {
         this.errorMessage =
