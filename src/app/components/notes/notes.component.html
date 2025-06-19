@@ -1,0 +1,30 @@
+<div class="notes-container">
+  <h2>My Notes</h2>
+
+  <form (ngSubmit)="addNote()" class="note-form">
+    <input
+      type="text"
+      [(ngModel)]="newNote.title"
+      name="title"
+      placeholder="Title"
+      required
+    />
+    <textarea
+      [(ngModel)]="newNote.content"
+      name="content"
+      placeholder="Write your note..."
+    ></textarea>
+    <button type="submit">Add Note</button>
+  </form>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+  <div *ngIf="loading">Loading notes...</div>
+
+  <div class="note-list">
+    <div class="note-card" *ngFor="let note of notes">
+      <h3>{{ note.title }}</h3>
+      <p>{{ note.content }}</p>
+      <button (click)="deleteNote(note.id)">🗑 Delete</button>
+    </div>
+  </div>
+</div>

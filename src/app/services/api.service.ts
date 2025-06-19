@@ -31,4 +31,16 @@ export class ApiService {
     const token = localStorage.getItem('token');
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
+
+  createNote(note: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/notes`, note, {
+      headers: this.authHeader(),
+    });
+  }
+
+  deleteNote(id: number): Observable<any> {
+    return this.http.delete(`${BASE_URL}/notes/${id}`, {
+      headers: this.authHeader(),
+    });
+  }
 }
