@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login to QuickNotes</h2>
+
+    <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="formData.username"
+          required
+          autocomplete="username"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="formData.password"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit" class="btn-primary">Login</button>
+
+      <p>Don't have an account? <a routerLink="/register">Register</a></p>
+
+      <div *ngIf="errorMessage" class="error-msg">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</div>
